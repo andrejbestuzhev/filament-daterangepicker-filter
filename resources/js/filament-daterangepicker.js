@@ -177,11 +177,13 @@ export default function dateRangeComponent({
 
             this.dateRangePicker = $(this.$refs.daterange).data('daterangepicker');
 
+            let self = this;
+
             $(this.$refs.daterange).on('apply.daterangepicker', function(ev, picker) {
                 if(singleCalendar){
-                    handleValueChangeUsing(picker.startDate.format(displayFormat), name)
+                    self.state = picker.startDate.format(displayFormat);
                 }else{
-                    handleValueChangeUsing(picker.startDate.format(displayFormat) + separator + picker.endDate.format(displayFormat), name)
+                    self.state = picker.startDate.format(displayFormat) + separator + picker.endDate.format(displayFormat);
                 }
             });
 
